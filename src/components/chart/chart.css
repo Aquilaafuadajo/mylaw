@@ -1,0 +1,32 @@
+.chart {
+  height: max-content;
+  padding: 40px 0px;
+}
+
+.legend {
+  display: flex;
+}
+
+.active::before {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid #0B7FEB;
+  width: 2em;
+  margin: 0 1rem;
+}
+
+.closed::before {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid rgb(255, 99, 132);
+  width: 2em;
+  margin: 0 1rem;
+}
+
+.new::before {
+  display: inline-block;
+  content: "";
+  border-top: .3rem solid#925b08;
+  width: 2em;
+  margin: 0 1rem;
+}

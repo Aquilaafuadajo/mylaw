@@ -47,10 +47,12 @@ class Navbar extends Component {
       <div className="nav-bar">
         <Grid container>
           <Grid item xs={2} className='grid-item'>
-            <img className='logo' src={require('../../../assets/mylaw.png')} alt="logo"/>
+            <div className="logo">
+              <img src={require('../../../assets/mylaw.png')} alt="logo"/>
+            </div>
           </Grid>
           <Grid item xs={6} className='grid-item'>
-            <h1>Lawyer Dashboard</h1>
+            <h2>Lawyer Dashboard</h2>
           </Grid>
           <Grid item xs={4} className='grid-item'>
             <MiniNav/>
