@@ -5,7 +5,8 @@ import './chart.css'
 const options = {
   legend: {
     display: false
-  }
+  },
+  responsive: true
 }
 
 export default function Chart(props) {
@@ -13,7 +14,6 @@ export default function Chart(props) {
   let config
   if(data)
   {const keys = Object.keys(data).slice(1, 4)
-  //const label = data[keys[0]]
 
    config = {
     labels: [...data['days']],
@@ -47,7 +47,7 @@ export default function Chart(props) {
   ]
   }}
 
-  return data? (
+  return (
     <div className="chart">
       <Line height={60} data={config} options={options}/>
       <span className="legend">
@@ -56,5 +56,5 @@ export default function Chart(props) {
       <h3 className='new'>New cases</h3>
       </span>
     </div>
-  ) : <p>No data yet</p>
+  )
 }

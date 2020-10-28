@@ -2,23 +2,9 @@ import React, {useState, useEffect} from 'react';
 import './App.css';
 
 import Navbar from './components/layout/navbar/navbar';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import { withStyles } from '@material-ui/core/styles';
 import Select from 'react-select';
 import Chart from './components/chart/chart';
 import Loader from './components/loader/loader';
-
-const styles = {
-  root: {
-    padding: '0 50px',
-    marginTop: '150px'
-  },
-  card: {
-    margin: '0 20px',
-    padding: '30px'
-  }
-};
 
 const options = [
   { value: 'October', label: 'October' },
@@ -27,7 +13,6 @@ const options = [
 ];
 
 function App(props) {
-  const {classes} = props
   const [selected, changeSelected] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -53,42 +38,33 @@ function App(props) {
     changeSelected({ selected });
     setChartData(data[selected.value])
   };
-  
+
   return loading ? <Loader/> : (
-    <div className='container'>
+    <>
       <Navbar/>
-      <Grid container className={classes.root}>
-        <Grid item xs={12}>
-          <Grid container>
-            {data? data['October'].current.map(val => {
-                const values = Object.entries(val)
-                return (
-                <Grid key={Object.keys(val)} item xs={3}>
-                  <Card className={classes.card}>
-                    <h3>{values[0][0]}</h3>
-                    <h1>{values[0][1]}</h1>
-                  </Card>
-                </Grid>
-              )}) : null
-            }
-          </Grid>
-          <Grid container>
-            <Grid item xs={3}>
-              <Select
-                defaultValue={options[0]}
-                label='Single select'
-                onChange={handleChange}
-                options={options}
-                styles={{marginLeft: '10px'}}
-              />
-            </Grid>
-            <Grid item xs={9}></Grid>
-          </Grid>
+      <div className='container'>
+        <div className='section' item xs={12}>
+          {data? data['October'].current.map(val => {
+              const values = Object.entries(val)
+              return (
+                <div className='card' key={Object.keys(val)}>
+                  <h3>{values[0][0]}</h3>
+                  <h1>{values[0][1]}</h1> 
+                </div>
+            )}) : null
+          }
+        </div>
+          <Select
+            defaultValue={options[0]}
+            label='Single select'
+            onChange={handleChange}
+            options={options}
+            styles={{marginLeft: '10px', marginRight: 'auto'}}
+          />
           <Chart height={20} width={100} data={chartData}/>
-        </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 }
 
-export default withStyles(styles)(App);
+export default (App);
