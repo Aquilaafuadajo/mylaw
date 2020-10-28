@@ -43,7 +43,7 @@ function App(props) {
     <>
       <Navbar/>
       <div className='container'>
-        <div className='section' item xs={12}>
+        <div className='section' >
           {data? data['October'].current.map(val => {
               const values = Object.entries(val)
               return (
