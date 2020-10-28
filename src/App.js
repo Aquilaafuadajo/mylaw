@@ -42,9 +42,6 @@ function App(props) {
     changeSelected({ selected });
     setChartData(data[selected.value])
     setCardData(data[selected.value])
-    let selectString = toString(selected)
-    console.log('selected: ', selected.value, data['August'])
-    console.log(data[selectString])
   };
 
   return loading ? <Loader/> : (
