@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './navbar.css';
 
-function UserProfile({...props}) {
+function User({...props}) {
   const {name, image} = props
   return (
     <div className="user-profile">
@@ -14,12 +14,12 @@ function UserProfile({...props}) {
   )
 }
 
-function MiniNav({...props}) {
+function AsideNav({...props}) {
   return (
     <ul className="mini-nav">
-      <li className='nav-item'>Support</li>
-      <li className='nav-item'>FAQ</li>
-      <UserProfile name='Emmanuel Afuadajo' image={require('../../../assets/profile-img.png')}/>
+      <li className='nav-item'><a href="#">Support</a></li>
+      <li className='nav-item'><a href="#">FAQ</a></li>
+      <User name='Emmanuel Afuadajo' image={require('../../../assets/profile-img.png')}/>
     </ul>
   )
 }
@@ -32,7 +32,7 @@ class Navbar extends Component {
           <img src={require('../../../assets/mylaw.png')} alt="logo"/>
         </div>
         <h2 className='nav-title'>Lawyer Dashboard</h2>
-        <MiniNav/>
+        <AsideNav/>
       </div>
     )
   }

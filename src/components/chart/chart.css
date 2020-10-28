@@ -5,6 +5,7 @@
 
 .legend {
   display: flex;
+  margin-top: 20px;
 }
 
 .active::before {

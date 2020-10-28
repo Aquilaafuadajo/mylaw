@@ -46,10 +46,11 @@ export default function Chart(props) {
     }
   ]
   }}
-
+  const media = window.matchMedia("(max-width: 900px)")
+  if(media.matches) console.log('Yasssss! it matched')
   return (
     <div className="chart">
-      <Line height={60} data={config} options={options}/>
+      <Line height={media.matches ? 100 : 60} data={config} options={options}/>
       <span className="legend">
       <h3 className='active'>Active cases</h3>
       <h3 className='closed'>Closed cases</h3>
