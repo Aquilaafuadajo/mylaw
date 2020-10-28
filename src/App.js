@@ -9,7 +9,10 @@ import Loader from './components/loader/loader';
 const options = [
   { value: 'October', label: 'October' },
   { value: 'September', label: 'September' },
-  { value: 'August', label: 'August' }
+  { value: 'August', label: 'August' },
+  { value: 'July', label: 'July' },
+  { value: 'June', label: 'June' },
+  { value: 'May', label: 'May' },
 ];
 
 function App(props) {
@@ -18,6 +21,7 @@ function App(props) {
   const [error, setError] = useState(null)
   const [data, setData] = useState(null)
   const [chartData, setChartData] = useState(null)
+  const [cardData, setCardData] = useState(null)
 
   useEffect(() => {
     setLoading(true)
@@ -37,6 +41,10 @@ function App(props) {
   const handleChange = selected => { 
     changeSelected({ selected });
     setChartData(data[selected.value])
+    setCardData(data[selected.value])
+    let selectString = toString(selected)
+    console.log('selected: ', selected.value, data['August'])
+    console.log(data[selectString])
   };
 
   return loading ? <Loader/> : (
@@ -44,14 +52,25 @@ function App(props) {
       <Navbar/>
       <div className='container'>
         <div className='section' >
-          {data? data['October'].current.map(val => {
+          {data ? 
+          ( cardData?
+             cardData.current.map(val => {
               const values = Object.entries(val)
               return (
                 <div className='card' key={Object.keys(val)}>
                   <h3>{values[0][0]}</h3>
                   <h1>{values[0][1]}</h1> 
                 </div>
-            )}) : null
+            )}) : 
+            data['October'].current.map(val => {
+              const values = Object.entries(val)
+              return (
+                <div className='card' key={Object.keys(val)}>
+                  <h3>{values[0][0]}</h3>
+                  <h1>{values[0][1]}</h1> 
+                </div>
+            )}))
+             : null
           }
         </div>
           <Select
